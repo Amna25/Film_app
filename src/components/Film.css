@@ -1,0 +1,11 @@
+table, tr, td {
+    border-collapse: collapse;
+    border : solid black;
+    background-color: lightgoldenrodyellow;
+
+
+}
+
+td{
+    padding: 5px;
+}

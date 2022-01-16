@@ -1,5 +1,6 @@
 import React from 'react'
 import Film from './Film'
+import './Film.css'
 
  const FilmItem = ({films}) => {
 

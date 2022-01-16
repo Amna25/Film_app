@@ -1,12 +1,13 @@
 import React,{useState, useEffect} from 'react'
 import FilmItem from '../components/FilmItem'
-import Filter from '../components/Filter'
+import './FilmBox.css'
+
 
  const FilmContainer = () => {
 
     const [films, setFilms]= useState([])
     const [search, setSearch] = useState('')
-    // const [filteredFilms, setFilteredFilms] = useState([])
+    const [filteredFilms, setFilteredFilms] = useState([])
 
    
 
@@ -14,13 +15,13 @@ import Filter from '../components/Filter'
         fetchFilms()
     }, [])
 
-    // useEffect(() => {
-    //     setFilteredFilms(
-    //         films.filter( (film) =>{
-    //             return film.title.toLowerCase().includes(search.toLowerCase())
-    //        })
-    //     )    
-    // }, [search, films])
+    useEffect(() => {
+        setFilteredFilms(
+            films.filter( (film) =>{
+                return film.title.toLowerCase().includes(search.toLowerCase())
+           })
+        )    
+    }, [search, films])
 
 
     const fetchFilms = () => {
@@ -28,33 +29,17 @@ import Filter from '../components/Filter'
         .then(response => response.json())
         .then(data => setFilms(data))   
     }
-    // const filter = (searchTerm) => {
-    //     const lowerSearch = searchTerm.toLowerCase()
-    //     const filteredFilms = films.filter((film) => {
-    //         return film.title.toLowerCase().indexOf(lowerSearch) > -1
-    //     })
-    //     setFilteredFilms(filteredFilms)
-    // }
-
-    const filteredFilms = films.filter( film =>{
-        return film.title.toLowerCase().includes(search.toLowerCase())
-    })
-    // const handleFilter =(event) => {
-    //     const serachFilm = event.target.value
-    //     const newFilter = films.filter((film) => {
-    //         return film.title.toLowerCase().includes(serachFilm.toLowerCase())
-    //     })
-    //     setFilteredFilms(newFilter)
-    // }
-
+   
     
 
     return (
+        <>
+        <h1>Favourite Fimls</h1>
+        <input  id = "input" type="text" placeholder="search your favourite film..."  onChange={event => setSearch(event.target.value)} />
         <div className="container">
-           <h1>Favourite Fimls</h1>
-           <input type="text" placeholder="search"  onChange={event => setSearch(event.target.value)} />
-           <FilmItem  films={filteredFilms}/>
+        <FilmItem  films={filteredFilms}/>
         </div>
+        </>
     )
 }
 

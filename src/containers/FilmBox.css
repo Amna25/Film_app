@@ -1,0 +1,26 @@
+.container{
+    font-family: Arial, Helvetica, sans-serif;
+    width:100%;
+    display:flex;
+    margin: 10px;
+    
+  
+  
+  }
+  h1{
+    position: center;
+    margin:10px;
+    border : solid black;
+    text-align: center;
+    background-color: skyblue;
+  }
+
+  #input {
+   margin: 10px;
+   padding: 10px;
+   text-align: center;
+   width: 25%;
+   float:right;
+   background-color: lightskyblue;
+
+  }
